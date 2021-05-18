@@ -1,6 +1,6 @@
 {
   "name": "fast-abort-controller",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "fast abort controller implementation that can be used as a ponyfill/polyfill",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
