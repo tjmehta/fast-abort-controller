@@ -13,7 +13,17 @@
     "type": "git",
     "url": "git+https://github.com/tjmehta/fast-abort-controller.git"
   },
-  "keywords": [],
+  "keywords": [
+    "abort",
+    "controller",
+    "signal",
+    "abortcontroller",
+    "abortsignal",
+    "polyfill",
+    "ponyfill",
+    "fast",
+    "performance"
+  ],
   "author": "Tejesh Mehta",
   "license": "MIT",
   "bugs": {
