@@ -1,17 +1,18 @@
+import { AbortSignalType } from './AbortSignalType'
 import EventEmitter3 from 'eventemitter3'
 
-class FastAbortSignal implements AbortSignal {
+export class AbortSignal implements AbortSignalType {
   private ee = new EventEmitter3()
   readonly aborted: boolean = false
 
   static abort() {
-    const signal = new FastAbortSignal()
+    const signal = new AbortSignal()
     signal.dispatchEvent({ type: 'abort' } as Event)
     return signal
   }
 
   set onabort(
-    listener: (this: AbortSignal, ev: AbortSignalEventMap['abort']) => any,
+    listener: (this: AbortSignalType, ev: AbortSignalEventMap['abort']) => any,
   ) {
     this.addEventListener('abort', listener)
   }
@@ -49,10 +50,8 @@ class FastAbortSignal implements AbortSignal {
   }
 }
 
-export const AbortSignal = FastAbortSignal
-
 export default class FastAbortController implements AbortController {
-  signal = new FastAbortSignal()
+  signal = new AbortSignal()
   abort() {
     this.signal.dispatchEvent({ type: 'abort' } as Event)
   }
