@@ -5,7 +5,7 @@ export class AbortSignal implements AbortSignalType {
   private ee = new EventEmitter3()
   readonly aborted: boolean = false
 
-  static abort() {
+  static abort(): AbortSignalType {
     const signal = new AbortSignal()
     signal.dispatchEvent({ type: 'abort' } as Event)
     return signal
