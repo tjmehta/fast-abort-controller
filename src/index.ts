@@ -1,7 +1,7 @@
 import { AbortSignalType } from './AbortSignalType'
 import EventEmitter3 from 'eventemitter3'
 
-export class AbortSignal implements AbortSignalType {
+class AbortSignal implements AbortSignalType {
   private ee = new EventEmitter3()
   readonly aborted: boolean = false
 
@@ -49,6 +49,8 @@ export class AbortSignal implements AbortSignalType {
     return true
   }
 }
+
+export const FastAbortSignal = AbortSignal
 
 export default class FastAbortController implements AbortController {
   signal = new AbortSignal()
