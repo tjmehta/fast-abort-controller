@@ -41,6 +41,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "eventemitter3": "^4.0.7"
+    "eventemitter3": "^4.0.7",
+    "globalthis": "^1.0.2"
   }
 }
