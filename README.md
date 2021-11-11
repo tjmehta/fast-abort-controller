@@ -14,7 +14,7 @@ npm i --save fast-abort-controller
 
 ```js
 // esm
-import AbortController from 'fast-abort-controller`
+import AbortController from 'fast-abort-controller'
 // commonjs
 const AbortController = require('fast-abort-controller').default
 ```
@@ -22,7 +22,7 @@ const AbortController = require('fast-abort-controller').default
 # Example with Fetch (which supports abort signals)
 
 ```js
-import AbortController from 'fast-abort-controller`
+import AbortController from 'fast-abort-controller'
 
 const controller = new AbortController()
 
@@ -51,7 +51,7 @@ try {
 ```js
 import { readFile } from 'fs/promises'
 
-import AbortController from 'fast-abort-controller`
+import AbortController from 'fast-abort-controller'
 import raceAbort from 'race-abort'
 
 const controller = new AbortController()
