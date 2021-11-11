@@ -64,7 +64,7 @@ function cancel() {
 
 try {
   // readFile doesnt support cancellation so we wrap it with raceAbort provided by another module 'race-abort'
-  raceAbort(readFile('foo/bar/qux'), signal)
+  await raceAbort(readFile('foo/bar/qux'), signal)
   console.log('request success')
 } catch (err) {
   if (err.name === 'AbortError') {
