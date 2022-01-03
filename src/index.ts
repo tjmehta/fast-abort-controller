@@ -17,7 +17,7 @@ export const hasAbortController =
   globalThis.AbortController !== FastAbortController
 
 const AbortControllerClass = hasAbortController
-  ? window.AbortController
+  ? globalThis.AbortController
   : FastAbortController
 
 export default AbortControllerClass
