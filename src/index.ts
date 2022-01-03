@@ -6,12 +6,12 @@ const globalThis = getGlobalThis()
 
 export const FastAbortSignal = _FastAbortSignal
 
-class FastAbortController implements AbortController {
+export class FastAbortController implements AbortController {
   signal: AbortSignal = new FastAbortSignal()
   abort = () => this.signal.dispatchEvent({ type: 'abort' } as Event)
 }
 
-const hasAbortController =
+export const hasAbortController =
   typeof globalThis !== 'undefined' &&
   'AbortController' in globalThis &&
   globalThis.AbortController !== FastAbortController
