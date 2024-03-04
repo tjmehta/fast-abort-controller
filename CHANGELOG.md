@@ -1,3 +1,7 @@
+# v4.0.0
+
+- major: es2020
+
 # v3.0.1
 
 - patch: fix exports
