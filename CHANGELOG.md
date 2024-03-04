@@ -1,3 +1,8 @@
+# v3.0.1
+
+- patch: fix exports
+- patch: fix globalthis usage in DomExceptionPonyfill
+
 # v3.0.0
 
 - major: fix cjs and esm support
