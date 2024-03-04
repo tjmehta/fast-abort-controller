@@ -1,18 +1,52 @@
-import { AbortSignalType } from './AbortSignalType'
+import GlobalAbortSignal from './GlobalAbortSignal'
 import EventEmitter3 from 'eventemitter3'
+import DomException from './DomExceptionPonyfill'
 
-export default class AbortSignal implements AbortSignalType {
+interface AbortSignalEventMap {
+  abort: Event
+}
+
+// name needs to literally be "AbortSignal" for some instanceof checks
+export default class AbortSignal implements GlobalAbortSignal {
+  // custom event emitter
   private ee = new EventEmitter3()
+  // aborted
   readonly aborted: boolean = false
+  // reason
+  private _reason: any
+  public get reason(): any {
+    if (!this.aborted) return
+    if (this._reason) return this._reason
 
-  static abort(): AbortSignalType {
+    // @ts-ignore
+    this._reason = Object.create(DomException.prototype, {
+      name: { value: 'AbortError' },
+      message: { value: 'The operation was aborted.' },
+      code: { value: 20 },
+    })
+
+    return this._reason
+  }
+
+  static abort(): GlobalAbortSignal {
     const signal = new AbortSignal()
+
     signal.dispatchEvent({ type: 'abort' } as Event)
+
     return signal
   }
 
+  throwIfAborted(): void {
+    if (this.aborted) {
+      throw this.reason
+    }
+  }
+
   set onabort(
-    listener: (this: AbortSignalType, ev: AbortSignalEventMap['abort']) => any,
+    listener: (
+      this: GlobalAbortSignal,
+      ev: AbortSignalEventMap['abort'],
+    ) => any,
   ) {
     this.addEventListener('abort', listener)
   }
@@ -45,6 +79,7 @@ export default class AbortSignal implements AbortSignalType {
   dispatchEvent(event: Event): boolean {
     // @ts-ignore
     this.aborted = true
+    // create reason lazily...
     this.ee.emit(event.type)
     return true
   }
