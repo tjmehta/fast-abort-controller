@@ -1,6 +1,6 @@
 # v4.0.2
 
-- patch: fix test jest config
+- patch: fix test jest configgst
 
 # v4.0.1
 
