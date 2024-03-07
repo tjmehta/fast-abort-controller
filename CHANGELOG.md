@@ -1,3 +1,7 @@
+# v4.0.2
+
+- patch: fix test jest config
+
 # v4.0.1
 
 - patch: build dir file extension fixes
