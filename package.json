@@ -50,6 +50,7 @@
     "jest": "^26.0.1",
     "prettier": "^2.0.5",
     "rename-recursively": "github:mateja176/rename",
+    "rewrite-cjs-esm-paths": "^1.0.3",
     "typescript": "^3.9.3"
   },
   "dependencies": {
