@@ -1,3 +1,7 @@
+# v4.0.4
+
+- patch: fix exports.types in pkg
+
 # v4.0.3
 
 - patch: fix build esm and cjs
